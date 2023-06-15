@@ -1,22 +1,36 @@
-#include <SFML/Graphics.hpp>
 #include <iostream>
 
 #include <fstream>
 #include "./Line.cpp"
 
+class Drawable
+{
 
-class Drawable{
+    Line *lines = new Line[8];
+    int last_line_index = -1;
 
-   
+public:
+    void draw(sf::RenderWindow *window)
+    {
+        for (int i = 0; i <= last_line_index; i++)
+        {
 
-
-    public:
-
-        void draw(){
-            Line line(20,10,100,100)
-
+            window->draw(lines[i]);
         }
-       
+    }
 
+    void setNumberOfLines(int n)
+    {
+        // lines = new Line[n];
+    }
 
-}
+    void addLine()
+    {
+    }
+
+    void addLine(Line line)
+    {
+
+        lines[++last_line_index] = line;
+    }
+};
