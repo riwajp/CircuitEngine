@@ -1,11 +1,10 @@
 #include <SFML/Graphics.hpp>
-#include "./Drawables.cpp"
+#include "./GATE.cpp"
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
-    Drawables drawables;
-    drawables.scan("./IN.dr");
+
     while (window.isOpen())
     {
 
@@ -17,9 +16,9 @@ int main()
                 window.close();
         }
 
-        // std::cout << drawables.last_drawable_index;
-        drawables.draw(&window);
-
+        GATE gate;
+        gate.setNumberOfInputs(5);
+        gate.draw(&window, 300, 300);
         window.display();
     }
 
