@@ -6,7 +6,7 @@
 class Drawable
 {
 
-    Line *lines = new Line[8];
+    Line *lines;
     int last_line_index = -1;
 
 public:
@@ -21,7 +21,7 @@ public:
 
     void setNumberOfLines(int n)
     {
-        // lines = new Line[n];
+        lines = new Line[n];
     }
 
     void addLine()

@@ -5,7 +5,7 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
     Drawables drawables;
-    drawables.scan();
+    drawables.scan("./IN.dr");
     while (window.isOpen())
     {
 

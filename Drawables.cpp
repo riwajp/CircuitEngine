@@ -13,26 +13,35 @@ class Drawables
 public:
     Drawables()
     {
-        // std::cout << "here";
     }
     int last_drawable_index = -1;
-    void scan()
+    void scan(std::string file_name)
     {
 
-        std::ifstream file("./triangle.dr");
-        std::string ln;
-        std::string buffer;
-        int number_of_lines = 0;
-        Drawable drawable;
+        std::ifstream file(file_name); // file for scanning
+        std::string ln;                // stores every line of the file
+        int number_of_lines = 0;       // number of valid lines in the file
+        Drawable drawable;             // drawable representing the dr file
+
+        while (std::getline(file, ln))
+        {
+
+            if (ln[0] != '/' and ln != "") // if the line is valid
+            {
+
+                number_of_lines++;
+            }
+        }
+        drawable.setNumberOfLines(number_of_lines);
+        file.clear();
+        file.seekg(0, std::ios::beg);
+
         while (std::getline(file, ln))
         {
 
             if (ln[0] != '/' and ln != "")
             {
-
-                // number_of_lines++;
-                //  drawable.setNumberOfLines(number_of_lines);
-
+                // add lines to the drawable from the file
                 Pointpair pointpair;
                 Line line;
                 pointpair.points(ln);
@@ -40,17 +49,14 @@ public:
                 drawable.addLine(line);
             }
         }
-        drawables[++last_drawable_index] = drawable;
+        drawables[++last_drawable_index] = drawable; // add this drawable to the drawables array
 
         file.close();
     }
 
     void draw(sf::RenderWindow *window)
     {
-        // Line line;
-        // line.setPoints(20, 10, 100, 2);
 
-        // window->draw(line);
         for (int i = 0; i <= last_drawable_index; i++)
         {
 

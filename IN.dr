@@ -1,0 +1,5 @@
+// An input line for logic cicuits.
+0 0 100 0;
+
+//Coordinates for input port.
+i 0 0;
