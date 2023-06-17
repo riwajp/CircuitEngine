@@ -1,24 +1,24 @@
 #include "./BOX.cpp"
 #include <iostream>
+#include "./Shapes/Line.cpp"
 
 class INPUT
 {
 
 public:
-    // bool input = 0;
-    int size = 150;
+    int length = 150;
     bool input = false;
+    int width = 3;
+    float x, y;
+    sf::Color color = sf::Color::White;
 
     void draw(sf::RenderWindow *window, float x, float y)
+
     {
-
-        sf::VertexArray lines(sf::LinesStrip, 2);
-
-        lines[0] = sf::Vector2f(x, y);
-        lines[1] = sf::Vector2f(x - size, y);
-        lines[0].color = sf::Color::White;
-        lines[1].color = sf::Color::White;
-
-        window->draw(lines);
+        Line line;
+        line.color = color;
+        line.draw(window, x - length, y, width, length);
+        this->x = x;
+        this->y = y;
     }
 };

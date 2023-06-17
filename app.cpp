@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include "./GATE.cpp"
+#include "./AND.cpp"
 
 int main()
 {
@@ -16,9 +16,12 @@ int main()
                 window.close();
         }
 
-        GATE gate;
-        gate.setNumberOfInputs(5);
-        gate.draw(&window, 300, 300);
+        AND and_gate;
+        and_gate.setNumberOfInputs(5);
+
+        and_gate.setInput(11111);
+        and_gate.setOutput();
+        and_gate.draw(&window, 300, 300);
         window.display();
     }
 

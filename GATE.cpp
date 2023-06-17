@@ -9,7 +9,7 @@ class GATE
 
 public:
     int number_of_inputs;
-    INPUT *inputs = new INPUT[10];
+    INPUT *inputs;
 
     OUTPUT output;
 
@@ -17,12 +17,22 @@ public:
 
     void setNumberOfInputs(int n)
     {
+
         number_of_inputs = n;
         inputs = new INPUT[n];
         for (int i = 0; i < number_of_inputs; i++)
         {
             INPUT input;
             inputs[i] = input;
+        }
+    }
+
+    void setInput(int bitstring)
+    {
+        for (int i = number_of_inputs - 1; i >= 0; i--)
+        {
+            inputs[i].input = bitstring % 10;
+            bitstring /= 10;
         }
     }
 
@@ -45,10 +55,20 @@ public:
             y += dy;
         }
     }
+
+    void drawOutput(sf::RenderWindow *window)
+    {
+        float x = box.o_top.x;
+
+        float y1 = box.o_top.y;
+        float y2 = box.o_bottom.y;
+        output.draw(window, x, (y2 + y1) / 2);
+    }
     void draw(sf::RenderWindow *window, float x, float y)
     {
 
         drawBox(window, x, y);
         drawInputs(window);
+        drawOutput(window);
     }
 };
