@@ -1,9 +1,10 @@
 #include <iostream>
-#include "./INPUT.cpp"
-#include "./OUTPUT.cpp"
-#include "./BOX.cpp"
+#include "../INPUT.cpp"
+#include "../OUTPUT.cpp"
+#include "../Shapes/BOX.cpp"
 #include <SFML/Graphics.hpp>
 
+#pragma once
 class GATE
 {
 
@@ -14,6 +15,12 @@ public:
     OUTPUT output;
 
     BOX box;
+    char direction = 'r';
+
+    void setDirection(char d)
+    {
+        direction = d;
+    }
 
     void setNumberOfInputs(int n)
     {
@@ -39,30 +46,52 @@ public:
     void drawBox(sf::RenderWindow *window, float x, float y)
     {
 
-        box.draw(window, x, y);
+        box.draw(window, x, y, direction);
     }
 
     void drawInputs(sf::RenderWindow *window)
     {
-        float x = box.i_top.x;
-        float dy = ((box.i_bottom.y - box.i_top.y) / (number_of_inputs + 1));
-        float y = box.i_top.y + dy;
+        float x, y, dx, dy;
+        if (direction == 'l' or direction == 'r')
+        {
+            dy = ((box.i_bottom.y - box.i_top.y) / (number_of_inputs + 1));
+            dx = 0;
+            x = box.i_top.x;
+            y = box.i_top.y + dy;
+        }
+        else
+        {
 
-        std::cout << x << "   " << y << std::endl;
+            dy = 0;
+            dx = ((box.i_bottom.x - box.i_top.x) / (number_of_inputs + 1));
+            x = box.i_top.x + dx;
+            y = box.i_top.y;
+        }
+
         for (int i = 0; i < number_of_inputs; i++)
         {
-            inputs[i].draw(window, x, y);
+            inputs[i].draw(window, x, y, direction);
+
             y += dy;
+            x += dx;
         }
     }
 
     void drawOutput(sf::RenderWindow *window)
     {
-        float x = box.o_top.x;
+        float x1 = box.o_top.x;
+        float x2 = box.o_bottom.x;
 
         float y1 = box.o_top.y;
         float y2 = box.o_bottom.y;
-        output.draw(window, x, (y2 + y1) / 2);
+        if (direction == 'l' or direction == 'r')
+        {
+            output.draw(window, x1, (y2 + y1) / 2, direction);
+        }
+        else
+        {
+            output.draw(window, (x1 + x2) / 2, y2, direction);
+        }
     }
     void draw(sf::RenderWindow *window, float x, float y)
     {
