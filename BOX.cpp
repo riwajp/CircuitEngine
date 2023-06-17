@@ -18,7 +18,6 @@ public:
         i_bottom = {x - width / 2, y + height / 2};
         o_top = {x + width / 2, y - height / 2};
         o_bottom = {x + width / 2, y + height / 2};
-        // std::cout << i_top.x << "   "<< "y1" << std::endl;
 
         lines[0].position = i_top;
         lines[1].position = i_bottom;

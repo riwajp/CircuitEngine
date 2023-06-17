@@ -9,7 +9,7 @@ class GATE
 
 public:
     int number_of_inputs;
-    INPUT *inputs;
+    INPUT *inputs = new INPUT[10];
 
     OUTPUT output;
 
@@ -19,7 +19,7 @@ public:
     {
         number_of_inputs = n;
         inputs = new INPUT[n];
-        for (int i = 0; i <= number_of_inputs; i++)
+        for (int i = 0; i < number_of_inputs; i++)
         {
             INPUT input;
             inputs[i] = input;
