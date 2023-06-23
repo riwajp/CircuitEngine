@@ -6,6 +6,10 @@ class AND : public GATE
 {
 
 public:
+    AND(float scale)
+    {
+        this->scale = scale;
+    }
     void setOutput()
     {
         output.output = true;

@@ -8,10 +8,22 @@ class BOX
     int width = 200;
 
 public:
+    float scale = 1;
+    BOX(){};
+    BOX(int scale)
+    {
+        this->scale = scale;
+    }
     sf::Vector2f i_top, i_bottom, o_top, o_bottom; // 4 points of the box
 
     void draw(sf::RenderWindow *window, float x, float y, char direction)
     {
+        x *= scale;
+        y *= scale;
+
+        int width = this->width * scale;
+        int height = this->height * scale;
+
         sf::VertexArray lines(sf::Quads, 5);
 
         i_top = {x - width / 2, y - height / 2};

@@ -6,12 +6,16 @@ class OR : public GATE
 {
 
 public:
+    OR(float scale)
+    {
+        this->scale = scale;
+    }
     void setOutput()
     {
         output.output = false;
         for (int i = 0; i < number_of_inputs; i++)
         {
-            if (!inputs[i].input)
+            if (inputs[i].input)
             {
                 output.output = true;
 

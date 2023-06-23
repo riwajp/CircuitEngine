@@ -9,12 +9,16 @@ class GATE
 {
 
 public:
+    GATE(){};
     int number_of_inputs;
     INPUT *inputs;
 
     OUTPUT output;
 
+    float scale = 1;
+
     BOX box;
+
     char direction = 'r';
 
     void setDirection(char d)
@@ -39,13 +43,14 @@ public:
         for (int i = number_of_inputs - 1; i >= 0; i--)
         {
             inputs[i].input = bitstring % 10;
+
             bitstring /= 10;
         }
     }
 
     void drawBox(sf::RenderWindow *window, float x, float y)
     {
-
+        box.scale = scale;
         box.draw(window, x, y, direction);
     }
 
@@ -54,6 +59,7 @@ public:
         float x, y, dx, dy;
         if (direction == 'l' or direction == 'r')
         {
+
             dy = ((box.i_bottom.y - box.i_top.y) / (number_of_inputs + 1));
             dx = 0;
             x = box.i_top.x;
@@ -70,6 +76,7 @@ public:
 
         for (int i = 0; i < number_of_inputs; i++)
         {
+            inputs[i].scale = scale;
             inputs[i].draw(window, x, y, direction);
 
             y += dy;
@@ -79,6 +86,7 @@ public:
 
     void drawOutput(sf::RenderWindow *window)
     {
+        output.scale = scale;
         float x1 = box.o_top.x;
         float x2 = box.o_bottom.x;
 
@@ -93,6 +101,7 @@ public:
             output.draw(window, (x1 + x2) / 2, y2, direction);
         }
     }
+
     void draw(sf::RenderWindow *window, float x, float y)
     {
 
