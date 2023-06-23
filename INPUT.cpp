@@ -10,7 +10,7 @@ public:
     int length = 150;
     bool input = false;
     int width = 3;
-    float port_x, port_y;
+    float x, y;
 
     void draw(sf::RenderWindow *window, float x, float y, char direction)
 
@@ -25,29 +25,29 @@ public:
         if (direction == 'r')
         {
             line.draw(window, x - length, y, width, length, direction);
-            port_x = x - length;
-            port_y = y;
+            this->x = x - length;
+            this->y = y;
         }
 
         if (direction == 'l')
         {
             line.draw(window, x + length, y, width, length, direction);
-            port_x = x + length;
-            port_y = y;
+            this->x = x + length;
+            this->y = y;
         }
 
         if (direction == 't')
         {
             line.draw(window, x, y + length, width, length, direction);
-            port_x = x;
-            port_y = y + length;
+            this->x = x;
+            this->y = y + length;
         }
 
         if (direction == 'b')
         {
             line.draw(window, x, y - length, width, length, direction);
-            port_x = x;
-            port_y = y - length;
+            this->x = x;
+            this->y = y - length;
         }
     }
 };

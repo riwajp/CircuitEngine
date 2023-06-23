@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "./Gates/AND.cpp"
 #include "./Gates/OR.cpp"
+#include "./Outputs/Bulb.cpp"
 
 int main()
 {
@@ -56,21 +57,25 @@ int main()
         }
 
         window.clear();
+
+        // draw and gate============================================
         AND and_gate;
         and_gate.setNumberOfInputs(5);
-
         and_gate.setInput(11111);
         and_gate.setOutput();
         and_gate.draw(&window, 500, 300);
 
+        // draw or gate===============================================
         OR or_gate;
         or_gate.setNumberOfInputs(5);
-
         or_gate.setInput(0);
         or_gate.setOutput();
         or_gate.direction = 'r';
         or_gate.draw(&window, 500, 600);
 
+        // draw bulb======================================
+        Bulb bulb;
+        bulb.draw(&window, 700, 500, 20);
         window.setView(view);
         window.display();
     }
