@@ -11,24 +11,14 @@ public:
     bool input = false;
     int width = 3;
     float port_x, port_y;
-    float scale = 1;
 
-    INPUT()
-    {
-    }
-
-    INPUT(float scale)
-    {
-        this->scale = scale;
-    }
     void draw(sf::RenderWindow *window, float x, float y, char direction)
 
     {
 
-        int width = this->width * scale;
-        int length = this->length * scale;
-        // x *= scale;
-        // y *= scale;
+        int width = this->width;
+        int length = this->length;
+
         Line line;
         line.color = input ? sf::Color::Green : sf::Color::Red;
 

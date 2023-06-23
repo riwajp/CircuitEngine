@@ -6,11 +6,7 @@ class AND : public GATE
 {
 
 public:
-    AND(float scale)
-    {
-        this->scale = scale;
-    }
-    void setOutput()
+       void setOutput()
     {
         output.output = true;
         for (int i = 0; i < number_of_inputs; i++)

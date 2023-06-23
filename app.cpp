@@ -4,9 +4,6 @@
 
 int main()
 {
-    int SCREEN_X, SCREEN_Y;
-    int VIEW_X, VIEW_Y;
-    float scale = 1;
 
     sf::RenderWindow window(sf::VideoMode(1000, 1000), "Breadboard++");
 
@@ -57,15 +54,16 @@ int main()
                 }
             }
         }
+
         window.clear();
-        AND and_gate(scale);
+        AND and_gate;
         and_gate.setNumberOfInputs(5);
 
         and_gate.setInput(11111);
         and_gate.setOutput();
         and_gate.draw(&window, 500, 300);
 
-        OR or_gate(scale);
+        OR or_gate;
         or_gate.setNumberOfInputs(5);
 
         or_gate.setInput(0);

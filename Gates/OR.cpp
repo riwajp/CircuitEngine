@@ -6,10 +6,6 @@ class OR : public GATE
 {
 
 public:
-    OR(float scale)
-    {
-        this->scale = scale;
-    }
     void setOutput()
     {
         output.output = false;

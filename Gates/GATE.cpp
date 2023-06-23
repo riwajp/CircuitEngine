@@ -15,8 +15,6 @@ public:
 
     OUTPUT output;
 
-    float scale = 1;
-
     BOX box;
 
     char direction = 'r';
@@ -50,7 +48,7 @@ public:
 
     void drawBox(sf::RenderWindow *window, float x, float y)
     {
-        box.scale = scale;
+
         box.draw(window, x, y, direction);
     }
 
@@ -76,7 +74,7 @@ public:
 
         for (int i = 0; i < number_of_inputs; i++)
         {
-            inputs[i].scale = scale;
+
             inputs[i].draw(window, x, y, direction);
 
             y += dy;
@@ -86,7 +84,7 @@ public:
 
     void drawOutput(sf::RenderWindow *window)
     {
-        output.scale = scale;
+
         float x1 = box.o_top.x;
         float x2 = box.o_bottom.x;
 
