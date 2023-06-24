@@ -14,7 +14,7 @@ public:
     {
         this->state = state;
     }
-    void draw(sf::RenderWindow *window, float x1, float y1, float x2, float y2)
+    void draw(sf::RenderWindow *window, float x1, float y1, float x2, float y2, char mode)
     {
 
         Line h_line, v_line;

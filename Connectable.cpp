@@ -1,5 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "./Wire.cpp"
+#include <iostream>
+
 #pragma once
 
 class Connectable
@@ -8,12 +10,12 @@ class Connectable
 public:
     float x, y;
     bool state = false;
-    void connect(sf::RenderWindow *window, Connectable component)
+    void connect(sf::RenderWindow *window, Connectable component, char mode = 'h')
     {
-        float nx = component.x;
-        float ny = component.y;
+
         state = component.state;
+
         Wire wire(state);
-        wire.draw(window, x, y, component.x, component.y);
+        wire.draw(window, x, y, component.x, component.y, mode);
     }
 };

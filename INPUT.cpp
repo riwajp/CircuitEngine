@@ -10,9 +10,8 @@ class INPUT : public Connectable
 
 public:
     int length = 150;
-    bool state = false;
+
     int width = 3;
-    float x, y;
 
     void draw(sf::RenderWindow *window, float x, float y, char direction)
 

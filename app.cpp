@@ -24,7 +24,6 @@ int main()
             {
 
                 view.zoom(1 + event.mouseWheelScroll.delta * 0.05);
-                std::cout << event.mouseWheelScroll.delta * 0.05 << std::endl;
             }
             if (event.type == sf::Event::KeyPressed)
             {
@@ -61,23 +60,27 @@ int main()
         // draw and gate============================================
         AND and_gate;
         and_gate.setNumberOfInputs(5);
-        and_gate.setInput(11111);
+        and_gate.setInput(11101);
         and_gate.setOutput();
-        and_gate.draw(&window, 500, 300);
+        and_gate.draw(&window, 300, 300);
 
         // draw or gate===============================================
         OR or_gate;
         or_gate.setNumberOfInputs(5);
         or_gate.setInput(0);
-        or_gate.setOutput();
+
         or_gate.direction = 'r';
-        or_gate.draw(&window, 500, 600);
+
+        or_gate.draw(&window, 800, 300);
+        or_gate.inputs[1].connect(&window, and_gate.output);
+        or_gate.setOutput();
+
+        or_gate.draw(&window, 800, 300);
 
         // draw bulb======================================
         Bulb bulb;
-        bulb.connect(&window, and_gate.output);
+        bulb.connect(&window, or_gate.output);
         bulb.draw(&window, 700, 500, 20);
-        // bulb.draw(&window, or_gate.output.x, or_gate.output.y, 20);
 
         window.setView(view);
         window.display();
