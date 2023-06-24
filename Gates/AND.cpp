@@ -6,14 +6,14 @@ class AND : public GATE
 {
 
 public:
-       void setOutput()
+    void setOutput()
     {
-        output.output = true;
+        output.state = true;
         for (int i = 0; i < number_of_inputs; i++)
         {
-            if (!inputs[i].input)
+            if (!inputs[i].state)
             {
-                output.output = false;
+                output.state = false;
 
                 return;
             }

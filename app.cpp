@@ -75,7 +75,10 @@ int main()
 
         // draw bulb======================================
         Bulb bulb;
+        bulb.connect(&window, and_gate.output);
         bulb.draw(&window, 700, 500, 20);
+        // bulb.draw(&window, or_gate.output.x, or_gate.output.y, 20);
+
         window.setView(view);
         window.display();
     }

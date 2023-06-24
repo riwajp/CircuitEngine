@@ -8,12 +8,12 @@ class OR : public GATE
 public:
     void setOutput()
     {
-        output.output = false;
+        output.state = false;
         for (int i = 0; i < number_of_inputs; i++)
         {
-            if (inputs[i].input)
+            if (inputs[i].state)
             {
-                output.output = true;
+                output.state = true;
 
                 return;
             }

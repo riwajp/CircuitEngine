@@ -40,7 +40,7 @@ public:
     {
         for (int i = number_of_inputs - 1; i >= 0; i--)
         {
-            inputs[i].input = bitstring % 10;
+            inputs[i].state = bitstring % 10;
 
             bitstring /= 10;
         }

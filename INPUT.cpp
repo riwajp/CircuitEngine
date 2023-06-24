@@ -1,14 +1,16 @@
 #include "./Shapes/BOX.cpp"
 #include <iostream>
 #include "./Shapes/Line.cpp"
+#include "./Connectable.cpp"
+
 #pragma once
 
-class INPUT
+class INPUT : public Connectable
 {
 
 public:
     int length = 150;
-    bool input = false;
+    bool state = false;
     int width = 3;
     float x, y;
 
@@ -20,7 +22,7 @@ public:
         int length = this->length;
 
         Line line;
-        line.color = input ? sf::Color::Green : sf::Color::Red;
+        line.color = state ? sf::Color::Green : sf::Color::Red;
 
         if (direction == 'r')
         {
